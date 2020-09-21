@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
 using totvs_test.Dtos;
@@ -9,6 +10,7 @@ namespace totvs_test.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class AuctionController : ControllerBase
     {
         IAuctionService _auctionService;

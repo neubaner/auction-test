@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using totvs_test;
 
 namespace totvs_test.Migrations
 {
     [DbContext(typeof(TotvsDbContext))]
-    partial class TotvsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200921004300_AddNameFieldToUser")]
+    partial class AddNameFieldToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,16 +74,6 @@ namespace totvs_test.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("97abbeca-c716-4eb0-b1da-d0e7287118b3"),
-                            Email = "guilherme.neubaner@gmail.com",
-                            Enabled = true,
-                            Name = "Guilherme Neubaner",
-                            Password = "$2a$11$IM6.AUVo9GujnYP8uV10F.VaDujBzBkCkO9JIINZ.9uMU7DIOguzK"
-                        });
                 });
 
             modelBuilder.Entity("totvs_test.Auction", b =>

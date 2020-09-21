@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using totvs_test;
 
 namespace totvs_test.Migrations
 {
     [DbContext(typeof(TotvsDbContext))]
-    partial class TotvsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200921150131_AddSeedDataToUser")]
+    partial class AddSeedDataToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
