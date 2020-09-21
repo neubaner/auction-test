@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using totvs_test.Services;
 
 namespace totvs_test
 {
@@ -29,6 +30,8 @@ namespace totvs_test
             services.AddControllers();
             services.AddDbContextPool<TotvsDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("TotvsContext")));
+
+            services.AddTransient<IAuctionService, AuctionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -28,6 +28,7 @@ namespace totvs_test
         [Required]
         public DateTime OpeningDate { get; set; }
 
+        // Se ClosingDate for nulo, o leilão ainda está em andamento.
         public DateTime? ClosingDate { get; set; }
 
     }
