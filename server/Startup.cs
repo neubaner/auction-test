@@ -31,6 +31,12 @@ namespace totvs_test
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(o => o.AddDefaultPolicy(
+                builder => builder
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin()));
+
             services.AddDbContextPool<TotvsDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("TotvsContext")));
 
@@ -71,6 +77,7 @@ namespace totvs_test
             // Por enquanto não irei utilizar https.
             // app.UseHttpsRedirection();
 
+            app.UseCors();
             app.UseRouting();
 
             app.UseAuthentication();
