@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+
+<mat-dialog-content class="content mat-typography">
+  <mat-form-field class="input">
+    <mat-label>Name</mat-label>
+    <input matInput required placeholder="Ex. Monalisa paiting" [(ngModel)]="data.auction.name">
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <mat-label>Initial Value</mat-label>
+    <input matInput required type="number" placeholder="230.00" [(ngModel)]="data.auction.initialValue">
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <mat-label>Responsible Id</mat-label>
+    <input matInput required placeholder="Ex. f86865d5-1c81-41f5-ae6e-d3e992c15457"
+      [(ngModel)]="data.auction.responsibleId">
+    <mat-hint>Por favor, use algum dos ids da tabela. Não tive tempo de implementar um select apropriado para o
+      responsável
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <input matInput [ngxMatDatetimePicker]="openingPicker" placeholder="Opening Date"
+      [(ngModel)]="data.auction.openingDate">
+    <mat-datepicker-toggle matSuffix [for]="openingPicker"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #openingPicker>
+    </ngx-mat-datetime-picker>
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <input matInput [ngxMatDatetimePicker]="closingPicker" placeholder="Closing Date"
+      [(ngModel)]="data.auction.closingDate">
+    <mat-datepicker-toggle matSuffix [for]="closingPicker"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #closingPicker>
+    </ngx-mat-datetime-picker>
+  </mat-form-field>
+
+  <div class="input slide">
+    <mat-slide-toggle [(ngModel)]="data.auction.isUsed"></mat-slide-toggle>
+    Is Used
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="data.auction">Ok</button>
+</mat-dialog-actions>

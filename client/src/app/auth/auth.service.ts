@@ -12,6 +12,7 @@ import Token from './token.model';
   providedIn: 'root'
 })
 export class AuthService {
+  private TOKEN_KEY = 'token'
   private jwtHelper: JwtHelperService = new JwtHelperService()
 
   constructor(private http: HttpClient) { }
@@ -33,11 +34,15 @@ export class AuthService {
   }
 
   public logout() {
-    localStorage.removeItem('token')
+    localStorage.removeItem(this.TOKEN_KEY)
+  }
+
+  public getToken() {
+    return localStorage.getItem(this.TOKEN_KEY)
   }
 
   public isAuthenticated() {
-    const token = localStorage.getItem('token')
+    const token = this.getToken()
 
     return token && !this.jwtHelper.isTokenExpired(token)
   }

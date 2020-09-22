@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span>
+    Auctions
+  </span>
+  <span class="toolbar-spacer"></span>
+  <button mat-button (click)="logout()">
+    Logout
+  </button>
+</mat-toolbar>
+
+<div class="content">
+  <app-auction-table [auctions]="auctions" (addAuctionEvent)="addNewAuction()" (editAuctionEvent)="editAuction($event)"
+    (deleteAuctionEvent)="deleteAuction($event)">
+  </app-auction-table>
+</div>

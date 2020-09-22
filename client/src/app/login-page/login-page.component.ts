@@ -41,7 +41,7 @@ export class LoginPageComponent implements OnInit {
       .subscribe(() => {
         this.navigateToAuction()
       }, err => {
-        this.error = 'Usuário ou senha inválidos'
+        this.error = 'Email or password invalid'
       })
   }
 
