@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +49,11 @@ namespace totvs_test.Services
             }
 
             return user;
+        }
+
+        public async Task<User> FindById(Guid id)
+        {
+            return await _dbContext.Users.FindAsync(id);
         }
     }
 }
