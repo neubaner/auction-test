@@ -33,6 +33,11 @@ namespace totvs_test.Controllers
 
             var token = _tokenService.GenerateToken(user);
 
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+
             return Ok(token);
         }
     }

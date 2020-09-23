@@ -19,6 +19,11 @@ namespace totvs_test.Services
 
         public TokenDto GenerateToken(User user)
         {
+            if (!user.Enabled)
+            {
+                return null;
+            }
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
             var tokenDescriptor = new SecurityTokenDescriptor
