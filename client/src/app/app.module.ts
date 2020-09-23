@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -54,6 +55,7 @@ import { AuctionDialogDeleteComponent } from './auction-dialog-delete/auction-di
     MatDialogModule,
     MatSlideToggleModule,
     MatDatepickerModule,
+    MatSnackBarModule,
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
     NgxMatTimepickerModule

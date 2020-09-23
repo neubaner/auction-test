@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuctionDialogDeleteComponent } from '../auction-dialog-delete/auction-dialog-delete.component';
 import { AuctionDialogComponent } from '../auction-dialog/auction-dialog.component';
@@ -20,9 +21,16 @@ export class AuctionPageComponent {
     private auctionService: AuctionService,
     private authService: AuthService,
     private router: Router,
+    private snackBar: MatSnackBar,
     private dialog: MatDialog) {
 
     this.getAllAuctions()
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 5 * 1000
+    })
   }
 
   logout() {
@@ -39,7 +47,9 @@ export class AuctionPageComponent {
   addNewAuction() {
     const data: AuctionDialogModel = {
       title: 'Create Auction',
-      auction: {}
+      auction: {
+        isUsed: false
+      }
     }
 
     const dialogRef = this.dialog.open(AuctionDialogComponent, {
@@ -51,6 +61,8 @@ export class AuctionPageComponent {
 
       this.auctionService.create(auction).subscribe(() => {
         this.getAllAuctions()
+      }, err => {
+        this.openSnackBar('There was an error while creating the new auction. Please try again')
       })
     })
   }
@@ -68,6 +80,8 @@ export class AuctionPageComponent {
     dialogRef.afterClosed().subscribe((auction: Auction) => {
       this.auctionService.update(auction).subscribe(() => {
         this.getAllAuctions()
+      }, err => {
+        this.openSnackBar('There was an error while editing the auction. Please try again')
       })
     })
   }
@@ -79,6 +93,8 @@ export class AuctionPageComponent {
       if (shouldDelete) {
         this.auctionService.delete(auction.id).subscribe(() => {
           this.getAllAuctions()
+        }, err => {
+          this.openSnackBar('There was an error while deleting the auction. Please try again.')
         })
       }
     })
